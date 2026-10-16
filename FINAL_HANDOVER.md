@@ -3,8 +3,8 @@
 **Đơn vị:** FPT University  
 **Dự án:** Predicting Electric Vehicle Purchase Propensity for Customer Targeting  
 **Giai đoạn:** Ongoing Assessment 1 (Business Understanding, Data Collection & Data Cleaning)  
-**Phiên bản:** 1.0 (Release Candidate - Prompt 7/7)  
-**Ngày cập nhật:** 2026-10-15  
+**Phiên bản:** 1.1 (Release Candidate - Streamlined Part 3 into 6 Core Code Cells)  
+**Ngày cập nhật:** 2026-10-16  
 
 ---
 
@@ -20,7 +20,7 @@ Cấu trúc workspace bàn giao được thiết kế tối giản, khoa học v
 Ongoing 1 rework/
 │
 ├── ADY201m_On Going 1.ipynb          # Notebook gốc do giảng viên cung cấp (Read-only, SHA256: 475e90f9ab7d9cbd7e1195503cdeea28ccaf0ef9860113c4c624086840edb503)
-├── ADY201m_On_Going_1_Working.ipynb  # Notebook làm việc chính thức (Hoàn thiện 4 Part, 14 Code cells đã chạy tuần tự, 53 cells tổng cộng)
+├── ADY201m_On_Going_1_Working.ipynb  # Notebook làm việc chính thức (Hoàn thiện 4 Part, Part 3 tinh gọn 6 Code cells theo Data Preparation flow, 10 Code cells toàn notebook đã chạy tuần tự [1]->[10], 40 cells tổng cộng)
 ├── PROJECT_LANGUAGE_RULES.md         # Quy định chuẩn ngôn ngữ dự án (Tiếng Việt học thuật cho câu trả lời sinh viên; giữ nguyên template tiếng Anh)
 ├── FINAL_HANDOVER.md                 # Tài liệu này (Hướng dẫn bàn giao, kiểm định & nộp bài)
 │
@@ -41,7 +41,7 @@ Ongoing 1 rework/
 2. **Khởi chạy:** Mở workspace bằng VS Code, Jupyter Lab hoặc Jupyter Notebook tại thư mục gốc `Ongoing 1 rework`.
 3. **Mở file notebook chính thức:** Chọn file `ADY201m_On_Going_1_Working.ipynb`.
 4. **Đường dẫn dữ liệu:** Notebook được thiết lập toàn bộ bằng đường dẫn tương đối (`dataset/...` và `prepared_data/...`), đảm bảo có thể chạy ngay mà không cần cấu hình lại ổ đĩa.
-5. **Cách chạy lại từ đầu:** Chọn menu `Kernel` -> `Restart Kernel and Run All Cells`. Toàn bộ 14 code cells sẽ thực thi tuần tự từ `[1]` đến `[14]` và hoàn tất trong khoảng 1–2 phút.
+5. **Cách chạy lại từ đầu:** Chọn menu `Kernel` -> `Restart Kernel and Run All Cells`. Toàn bộ 10 code cells sẽ thực thi tuần tự từ `[1]` đến `[10]` và hoàn tất trong khoảng 1–2 phút.
 
 ---
 
@@ -71,6 +71,6 @@ Nhóm cần lưu ý các ranh giới phạm vi học thuật đã được quy �
 Khi bước sang Giai đoạn Ongoing Assessment 2, nhóm sẽ sử dụng hai file trong `prepared_data/` và tiếp tục theo lộ trình:
 1. **Xác lập ma trận đặc trưng:** Đọc `train_prepared.csv`, tách riêng $X$ (17 cột đặc trưng) và $y$ (`Will_Buy_EV`). Loại trừ cột `id` khỏi ma trận đầu vào mô hình.
 2. **Chiến lược phân tầng:** Áp dụng `StratifiedKFold` (ví dụ 5 folds) để bảo toàn tỷ lệ nhãn ~17,46% lớp `"Yes"`.
-3. **Đường ống Preprocessing:** Gọi `ColumnTransformer` đã thiết kế sẵn ở Bước 6 Part 3, thực hiện `fit_transform` chỉ trên training fold và `transform` sang validation fold.
+3. **Đường ống Preprocessing:** Gọi `ColumnTransformer` đã thiết kế sẵn ở Cell 3 (Giai đoạn 3 / Bước 4 & 6) Part 3, thực hiện `fit_transform` chỉ trên training fold và `transform` sang validation fold.
 4. **Mô hình hóa:** Huấn luyện Baseline (Logistic Regression) và thử nghiệm các mô hình phân loại (Random Forest, LightGBM, XGBoost, CatBoost).
 5. **Tối ưu hóa ngưỡng quyết định:** Sử dụng PR-AUC, F1-score và hiệu chỉnh decision threshold theo bài toán chi phí nghiệp vụ của đại lý ô tô.
